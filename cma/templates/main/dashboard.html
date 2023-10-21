@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mycss.css' %}">
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <form method="get">
+        <label for="company_number">Company Number:</label>
+        <input type="text" name="company_number" id="company_number" value="{{ selected_company_number|default:'' }}">
+        
+        <label for="country">Country:</label>
+        <input type="text" name="country" id="country" value="{{ selected_country|default:'' }}">
+        
+        <button type="submit">Filter</button>
+    </form>
+    <table style="margin-top:20px">
+        <thead>
+            <tr>
+                <th>Company Number</th>
+                <th>Person Number</th>
+                <th>Appointment Date</th>
+                <th>Postcode</th>
+                <th>Date of Birth</th>
+                <th>Title</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Honours</th>
+                <th>Care Of</th>
+                <th>PO Box</th>
+                <th>Address 1</th>
+                <th>Address 2</th>
+                <th>Town</th>
+                <th>County</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in officer_data %}
+            <tr>
+                <td>{{ data.company_number }}</td>
+                <td>{{ data.person_number }}</td>
+                <td>{{ data.appointment_date }}</td>
+                <td>{{ data.postcode }}</td>
+                <td>{{ data.date_of_birth }}</td>
+                <td>{{ data.title }}</td>
+                <td>{{ data.first_name }}</td>
+                <td>{{ data.last_name }}</td>
+                <td>{{ data.honours }}</td>
+                <td>{{ data.care_of }}</td>
+                <td>{{ data.po_box }}</td>
+                <td>{{ data.address1 }}</td>
+                <td>{{ data.address2 }}</td>
+                <td>{{ data.town }}</td>
+                <td>{{ data.county }}</td>
+                <td>{{ data.country }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
